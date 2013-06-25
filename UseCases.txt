@@ -1,0 +1,51 @@
+- CV management
+- Make fast prototype
+- make fast english exercise everyday:
+  + listening exercise
+  + fill in the gap exercise
+  + translate exercise
+- Collect tools
+- Make fast interactive exercises
+- Share links to the others
+- Create a collaboration space
+- App maker using collaboration among designer, developers
+- Create and upload one demo faster.
+  + want to write a web demo
+  + want to make it available publicly
+  + Want to submit it fastly
+  + Store the code inside object,
+- Don't need to interact with the server
+- The system we'll build can handle any kinds for object
+
+- The appstore for small function:
+  + search for a solution
+  +
+
+- solution maker
+- solution appstore
+- solution run
+
+- a transparent way to transfer between
+
+* What is important?
+- help developers to manage their views -> important? different from parse? -> no
+- enforce some declared fragment, build release fragment:
+  + graph view
+  + list view
+  + html_preview
+  + app_preview
+- enforce object hierarchy
+
+Objects
+Views
+Schemas:
+ - simple document
+ - event
+ -
+
+Methodology:
+ - less code, drag and drop + declare only
+ - change the way we cooperate and working on a project, especially web project,
+ - value transforming code. Edit one, affect the others.
+ - while coding, see the effect
+ - people develop views ON THE SAME DATABASE. Only views changed, not the data itself. The object can be extend,
