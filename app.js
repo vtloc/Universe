@@ -7,6 +7,7 @@ var express = require('express')
   , routes = require('./routes')
   , object  = require('./routes/object')
   , environment = require('./routes/environment')
+  , resources = require('./routes/resources')
   , http = require('http')
   , mongoose = require('mongoose')
   , path = require('path');
@@ -21,7 +22,10 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
-app.use(express.bodyParser());
+app.use(express.bodyParser({
+    uploadDir: __dirname + '/public/uploads',
+    keepExtensions: true
+}));
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('stylus').middleware(__dirname + '/public'));
@@ -37,7 +41,13 @@ app.get('/objects', object.get_all)
 app.get('/objects/:id', object.get_one)
 app.post('/objects', object.add_new)
 app.put('/objects/:id', object.update)
+app.post('/objects/:id', object.update)
 app.del('/objects/:id', object.remove)
+
+app.get('/resources/upload', resources.upload_form)
+app.post('/resources/upload', resources.add_new)
+app.post('/resources/upload', resources.add_new)
+app.get('/resources/:id', resources.get_one)
 
 app.get('/html_preview/:id', environment.html_preview)
 app.get('/text_view/:id', environment.text_view)

@@ -1,8 +1,23 @@
 extends layout
 
+block css
+    style.
+        .active {
+            font-weight: bold;
+        }
+
 block script
     script(data-main='/javascripts/backbone/htmleditor-main', src='/javascripts/backbone/libs/require.js')
 
 block content
-    div.container
-        div#content
+    div.container#content.span12
+        div#list_toolbar.span3
+            button#add_btn.btn Add
+            a#upload_btn(href="/resources/upload", target="_blank") Upload
+            hr
+            div#list.container
+        div#editor.span8
+           a#preview_link(href="") Preview
+           textarea#code(style="width:100%;height: 600px")
+           button#save_btn.btn Save
+           button#delete_btn.btn Delete

@@ -3,7 +3,8 @@
   var initObject;
 
   initObject = function() {
-    var Schema, mongoose, _model, _schema;
+    var Schema, mongoose, _model, _schema,
+      _this = this;
     mongoose = require('mongoose');
     Schema = mongoose.Schema;
     _schema = new Schema({
@@ -18,6 +19,13 @@
         }
       ]
     });
+    _schema.methods.get_path = function(fragment) {
+      if (_this.data.path != null) {
+        return _this.data.path;
+      } else {
+        return null;
+      }
+    };
     _model = mongoose.model('Object', _schema);
     return {
       schema: _schema,

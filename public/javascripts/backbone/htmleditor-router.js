@@ -5,23 +5,20 @@
     var AppRouter, initialize;
     AppRouter = Backbone.Router.extend({
       routes: {
-        ':id': 'showCodeEditor'
+        '': 'showCodeEditor'
       },
       el_root: function() {
-        $('#content').html(' ');
-        $('#content').append('<div id="content_child"></div>');
-        return $('#content_child');
+        return $('#content');
       }
     });
     initialize = function() {
       var app_router;
       app_router = new AppRouter;
-      app_router.on('route:showCodeEditor', function(id) {
+      app_router.on('route:showCodeEditor', function() {
         var view;
         console.log("HERE");
         view = new HTMLCodeEditor({
-          el: app_router.el_root,
-          id: id
+          el: app_router.el_root
         });
         return view.render();
       });

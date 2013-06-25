@@ -16,11 +16,8 @@
     var newObj,
       _this = this;
     newObj = new Object.model();
-    newObj.data = {
-      html: "hello",
-      text: "demo"
-    };
-    newObj.links = [];
+    newObj.data = req.body.data;
+    newObj.links = req.body.links;
     return newObj.save(function(err) {
       return res.json({
         id: newObj._id
@@ -50,9 +47,10 @@
 
   exports.add_new = function(req, res) {
     var newObj;
+    console.log("Add new ", req.body);
     newObj = new Object.model();
-    newObj.data = req.data;
-    newObj.links = req.links;
+    newObj.data = req.body.data;
+    newObj.links = req.body.links;
     return newObj.save(function(err) {
       var result;
       result = {
@@ -63,18 +61,26 @@
   };
 
   exports.update = function(req, res) {
-    var result;
-    result = {};
-    return Object.model.update(req.body, function(err) {
-      return res.json(result);
+    var newObjData;
+    console.log("Update ", req.body);
+    newObjData = {
+      _id: req.params.id,
+      data: req.body.data,
+      links: req.body.links
+    };
+    return Object.model.update(newObjData, function(err) {
+      return res.json({});
     });
   };
 
   exports.remove = function(req, res) {
-    var result;
-    result = {};
-    return Object.model.remove(req.body, function(err) {
-      return res.json(result);
+    return Object.model.remove({
+      _id: req.params.id
+    }, function(err) {
+      return res.json({
+        code: -1,
+        message: "successed"
+      });
     });
   };
 

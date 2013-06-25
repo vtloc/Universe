@@ -13,6 +13,12 @@ initObject = () ->
     }]
   })
 
+  _schema.methods.get_path = (fragment) =>
+    if this.data.path?
+      this.data.path
+    else
+      null
+
   _model = mongoose.model 'Object', _schema
 
   return {
